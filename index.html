@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CookBook Recipe Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <nav>
+        <div class="logo">
+          <h1><i class="fas fa-utensils"></i> CookBook</h1>
+        </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search recipes or ingredients..."
+          />
+          <button type="button" class="search-button">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <div class="nav-buttons">
+          <button id="favoritesBtn" class="nav-btn">
+            <i class="fas fa-heart"></i> Favorites
+          </button>
+          <button id="addRecipeBtn" class="nav-btn add-recipe">
+            <i class="fas fa-plus"></i> Add Recipe
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Categories -->
+      <section class="categories">
+        <h2>Categories</h2>
+        <div class="category-buttons">
+          <button class="category-btn active" data-category="all">All</button>
+          <button class="category-btn" data-category="breakfast">
+            Breakfast
+          </button>
+          <button class="category-btn" data-category="lunch">Lunch</button>
+          <button class="category-btn" data-category="dinner">Dinner</button>
+          <button class="category-btn" data-category="dessert">Dessert</button>
+        </div>
+      </section>
+
+      <!-- Recipe Grid -->
+      <div class="recipe-grid" id="recipeGrid"></div>
+
+      <!-- Add Recipe Modal -->
+      <div id="addRecipeModal" class="modal">
+        <div class="modal-content">
+          <span class="close"><i class="fas fa-times"></i></span>
+          <h2 class="modal-title">
+            <i class="fas fa-plus-circle"></i> Add New Recipe
+          </h2>
+          <form id="addRecipeForm">
+            <div class="form-group">
+              <label for="recipeName">Recipe Name</label>
+              <input
+                type="text"
+                id="recipeName"
+                required
+                placeholder="Enter recipe name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="recipeImage">Recipe Image</label>
+              <div class="file-input-wrapper">
+                <input
+                  type="file"
+                  id="recipeImage"
+                  accept="image/*"
+                  class="file-input"
+                />
+                <label for="recipeImage" class="file-input-label">
+                  <i class="fas fa-camera"></i> Choose Image
+                </label>
+                <span class="file-name">No file chosen</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group half">
+                <label for="prepTime">Prep Time (mins)</label>
+                <input
+                  type="number"
+                  id="prepTime"
+                  required
+                  min="1"
+                  placeholder="Enter prep time"
+                />
+              </div>
+              <div class="form-group half">
+                <label for="cookTime">Cook Time (mins)</label>
+                <input
+                  type="number"
+                  id="cookTime"
+                  required
+                  min="1"
+                  placeholder="Enter cook time"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select id="category" required>
+                <option value="">Select a category</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="dinner">Dinner</option>
+                <option value="dessert">Dessert</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ingredients">Ingredients</label>
+              <textarea
+                id="ingredients"
+                required
+                placeholder="Enter ingredients (one per line)&#10;Example:&#10;2 cups flour&#10;1 cup sugar"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="instructions">Instructions</label>
+              <textarea
+                id="instructions"
+                required
+                placeholder="Enter cooking instructions (step by step)&#10;Example:&#10;1. Preheat oven to 350°F&#10;2. Mix dry ingredients"
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-plus"></i> Add Recipe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Recipe Details Modal -->
+      <div id="recipeDetailsModal" class="modal">
+        <div class="modal-content recipe-details-modal">
+          <span class="close"><i class="fas fa-times"></i></span>
+          <div id="recipeDetails" class="recipe-details"></div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
